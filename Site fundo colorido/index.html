@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    
+    <title>Sitezinho com cores</title>
+    <!-- Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Link -->
+    <link rel="icon" type="image/" href="../icone.jpg">
+    <link rel="stylesheet" type="text/css" href="csstrocardecor.css">
+    
+
+    <!-- Scripts -->
+    <script src="trocardecor.js" defer ></script>
+
+</head>
+<body id="CORFUNDO">
+    <div class="barralateral"> <!-- Barra lateral -->
+        
+        <ul class="listaentradas">
+            <div id="quadradovermelho">R:</div>
+            <input  onchange="pegarcorlateral(this)" id="1" name="vermelho" type="range" min="0" max="255">
+        </ul>
+        <ul class="listaentradas">   
+            <div id="quadradoverde">G:</div>
+            <input     onchange="pegarcorlateral(this)" id="2" name="verde"    type="range" min="0" max="255">
+        
+        </ul>
+        <ul class="listaentradas">    
+            <div id="quadradoazul">B:</div>
+            <input      onchange="pegarcorlateral(this)" id="3" name="azul"     type="range" min="0" max="255">
+        
+        </ul>
+
+    </div> <!-- Fim barra lateral -->
+
+        <h1 id="TEXTOCORFUNDO">White</h1>
+
+  
+
+
+</body>
+</html>
