@@ -11,6 +11,7 @@
     
 
      <!--  Script     -->
+    <?php header("Location: index.php");      ?>
 
       <!--  Titulo     -->
     <title>Ecomerce</title>
@@ -49,18 +50,35 @@
     -->
     <container >
         <div class="cardapio" style="background-image: url(https://img.freepik.com/fotos-gratis/conceito-de-madeira-da-textura-do-papel-de-parede-do-fundo-do-material_53876-30425.jpg?t=st=1667952039~exp=1667952639~hmac=f85e5a570db4b222f5f4c6a260c532fb208e605e0ac5ce2e776cc7b16eecc991);">
+            <?php
+            $servidor = "localhost";
+            $usuario = "root";
+            $senha = "84374650";
+            $bancodados = "pizzaria";
+            $conexao = new mysqli($servidor, $usuario, $senha, $bancodados);
 
-            <div class="item" onclick="abrir(this)"  style="background-image: url(https://i.pinimg.com/originals/e0/a9/97/e0a997d590f57a222bdda4c14e4791c9.jpg);">
-                <nome style="display: none;">Calabresa</nome>
-                <ingredientes style="display: none;">calabresa, muita.</ingredientes>
-                <descricao style="display: none;">pizza de calabresa</descricao>
-                <preco style="display: none">199</preco>
-                <div class="vidrocardapio">
-                    <h1>Calabresa</h1>
-                </div>   
-            </div>
+            if ($conexao->connect_error) {die("Falanha na conexao: ". $conexao->connect_error );}
 
+            $pedidosql = "SELECT * from pizzas";
 
+            $pedidosql = $conexao->query($pedidosql);
+            if (isset($pedidosql->num_rows)) {
+             while ($dados = $pedidosql->fetch_assoc() ) {
+
+                 echo'
+                    <div class="item" onclick="abrir(this)"  style="background-image: url('.$dados["caminho_imagem"].');">
+                    <nome style="display: none;">'.$dados["sabor"].'.</nome>
+                    <ingredientes style="display: none;">'.$dados["ingredientes"].'</ingredientes>
+                    <descricao style="display: none;">'.$dados["descricao"].'</descricao>
+                    <preco style="display: none">'.$dados["preco"].'</preco>
+                    <div class="vidrocardapio">
+                        <h1>'.$dados["nome"].'</h1>
+                    </div>
+                    </div>
+            ';
+
+             }}
+            ?>
         </div>
 
     </container>
@@ -72,6 +90,38 @@
         Promoções!
     -->
     <container>
+        <div class="cardapio" style="background-image: url(https://img.freepik.com/fotos-gratis/conceito-de-madeira-da-textura-do-papel-de-parede-do-fundo-do-material_53876-30425.jpg?t=st=1667952039~exp=1667952639~hmac=f85e5a570db4b222f5f4c6a260c532fb208e605e0ac5ce2e776cc7b16eecc991);">
+            <?php
+            $servidor = "localhost";
+            $usuario = "root";
+            $senha = "84374650";
+            $bancodados = "pizzaria";
+            $conexao = new mysqli($servidor, $usuario, $senha, $bancodados);
+
+            if ($conexao->connect_error) {die("Falanha na conexao: ". $conexao->connect_error );}
+
+            $pedidosql = "SELECT * from promocoes";
+
+            $pedidosql = $conexao->query($pedidosql);
+            if (isset($pedidosql->num_rows)) {
+                while ($dados = $pedidosql->fetch_assoc() ) {
+
+                    echo'
+                    <div class="item" onclick="abrir(this)"  style="background-image: url('.$dados["caminho_imagem"].');">
+                    <nome style="display: none;">'.$dados["sabor"].'.</nome>
+                    <ingredientes style="display: none;">'.$dados["ingredientes"].'</ingredientes>
+                    <descricao style="display: none;">'.$dados["descricao"].'</descricao>
+                    <preco style="display: none">'.$dados["preco"].'</preco>
+                    <div class="vidrocardapio">
+                        <h1>'.$dados["nome"].'</h1>
+                    </div>
+                    </div>
+            ';
+
+                }}
+            ?>
+        </div>
+
 
     </container>
 
@@ -95,6 +145,9 @@
     </div>
 
     <div id="fundomodal" onclick="fechar()" class="mostrar"></div>
+
+
+
 
 </body>
 
